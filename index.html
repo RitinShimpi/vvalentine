@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Just One Question 💖</title>
+  <title>For Minnie 💛</title>
 
   <style>
     :root {
-      --bg: #0f172a;        /* midnight blue */
-      --card: #111827;     /* dark slate */
-      --accent: #f472b6;   /* rose pink */
-      --accent-2: #a78bfa; /* lavender */
-      --text: #f8fafc;
-      --muted: #c7c9d1;
+      --bg: #1f1a0f;
+      --card: #2a230f;
+      --accent: #facc15;     /* yellow */
+      --accent-2: #c4b5fd;   /* lavender */
+      --text: #fffbea;
+      --muted: #fef08a;
     }
 
     * {
@@ -23,7 +23,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background: radial-gradient(circle at top, #1e293b, var(--bg));
+      background: radial-gradient(circle at top, #3b2f12, var(--bg));
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       display: flex;
@@ -34,11 +34,11 @@
     .card {
       width: 92%;
       max-width: 420px;
-      background: linear-gradient(180deg, #0b1220, var(--card));
-      border-radius: 24px;
-      padding: 28px 22px 34px;
+      background: linear-gradient(180deg, #3a300f, var(--card));
+      border-radius: 26px;
+      padding: 30px 22px 36px;
       text-align: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,.45);
+      box-shadow: 0 30px 60px rgba(0,0,0,.5);
       position: relative;
       overflow: hidden;
     }
@@ -46,7 +46,7 @@
     .glow {
       position: absolute;
       inset: -40%;
-      background: radial-gradient(circle, rgba(244,114,182,.15), transparent 60%);
+      background: radial-gradient(circle, rgba(250,204,21,.18), transparent 65%);
       animation: pulse 6s infinite ease-in-out;
       pointer-events: none;
     }
@@ -56,10 +56,14 @@
       50% { transform: scale(1.15); opacity: .9; }
     }
 
+    .flower {
+      font-size: 2.6rem;
+      margin-bottom: 6px;
+    }
+
     h1 {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       margin: 8px 0 6px;
-      letter-spacing: .2px;
     }
 
     p {
@@ -68,20 +72,10 @@
       margin: 0 0 22px;
     }
 
-    .heart {
-      font-size: 3rem;
-      animation: beat 1.6s infinite;
-      margin-bottom: 8px;
-    }
-
-    @keyframes beat {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-
     .question {
-      font-size: 1.25rem;
-      margin: 18px 0 26px;
+      font-size: 1.3rem;
+      margin: 20px 0 28px;
+      line-height: 1.4;
     }
 
     .actions {
@@ -97,9 +91,9 @@
       border-radius: 14px;
       border: none;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition: transform .15s ease;
     }
 
     button:active {
@@ -108,45 +102,45 @@
 
     #yesBtn {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b1220;
-      box-shadow: 0 10px 25px rgba(244,114,182,.35);
+      color: #2a230f;
+      box-shadow: 0 10px 25px rgba(250,204,21,.45);
     }
 
     #noBtn {
       background: transparent;
       color: var(--text);
-      border: 2px solid rgba(248,250,252,.25);
+      border: 2px dashed rgba(250,204,21,.6);
       position: relative;
     }
 
     .result {
       display: none;
-      margin-top: 10px;
+      margin-top: 12px;
       animation: fadeIn .6s ease forwards;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .result h2 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-bottom: 6px;
+      color: var(--accent);
     }
 
     .result p {
-      color: var(--text);
       font-size: 1rem;
+      color: var(--text);
     }
 
-    /* Floating hearts */
     .float-heart {
       position: absolute;
       bottom: -20px;
       font-size: 1.4rem;
-      animation: floatUp 3.5s linear forwards;
-      opacity: .8;
+      animation: floatUp 3.8s linear forwards;
+      opacity: .9;
       pointer-events: none;
     }
 
@@ -156,30 +150,31 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="card" id="card">
     <div class="glow"></div>
 
-    <div class="heart">💗</div>
+    <div class="flower">💛🌿</div>
 
-    <h1>Hey you ✨</h1>
-    <p>I’ve been meaning to ask you something…</p>
+    <h1>Minnie ✨</h1>
+    <p>Hey Kanda… I need to ask you something important 💭</p>
 
     <div class="question">
-      Will you be my Valentine?
+      Kya mujhse shadi karogi Minnu ?? 💍
     </div>
 
     <div class="actions">
-      <button id="yesBtn">Yes 💕</button>
-      <button id="noBtn">No</button>
+      <button id="yesBtn">Haan 💛</button>
+      <button id="noBtn">Nahi 🙈</button>
     </div>
 
     <div class="result" id="result">
-      <h2>It’s a date 💖</h2>
+      <h2>She said YES 💛💜</h2>
       <p>
-        You just made me smile like an idiot.<br/>
-        I can’t wait to make memories with you ✨
+        Minnie, you are my favorite person, my calm, my chaos, my home.<br/>
+        Forever starts with us 🌿
       </p>
     </div>
   </div>
@@ -191,11 +186,11 @@
     const card = document.getElementById("card");
 
     const noTexts = [
-      "Are you sure?",
-      "Think again 😌",
-      "That hurts…",
-      "Really? 🥺",
-      "Last chance 😏"
+      "Soch lo 😌",
+      "Aise kaise 😏",
+      "Kanda pls 🥺",
+      "Minnu 😭",
+      "Last chance 💛"
     ];
     let noCount = 0;
 
@@ -212,20 +207,19 @@
       result.style.display = "block";
       yesBtn.style.display = "none";
       noBtn.style.display = "none";
-
       spawnHearts();
     });
 
     function spawnHearts() {
-      for (let i = 0; i < 24; i++) {
+      const emojis = ["💛","💜","🌿","💍"];
+      for (let i = 0; i < 26; i++) {
         setTimeout(() => {
           const heart = document.createElement("div");
           heart.className = "float-heart";
-          heart.textContent = "💖";
+          heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
           heart.style.left = Math.random() * 100 + "%";
           heart.style.fontSize = (Math.random() * 10 + 16) + "px";
           card.appendChild(heart);
-
           setTimeout(() => heart.remove(), 4000);
         }, i * 120);
       }
