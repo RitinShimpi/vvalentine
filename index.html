@@ -2,229 +2,207 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>For Minnie 💛</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minnie 💛</title>
 
 <style>
-:root {
-  --yellow: #FFF3B0;
-  --lavender: #7C6AF2;
-  --lavender-soft: #9F91FF;
+:root{
+  --yellow:#FFD84D;
+  --lav:#7B61FF;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--yellow);
-  color: var(--lavender);
-  height: 100vh;
-  overflow: hidden;
+body{
+  background:var(--yellow);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  height:100vh;
+  overflow:hidden;
+  color:var(--lav);
 }
 
-/* SECTIONS */
-.section {
-  position: absolute;
-  inset: 0;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  transition: opacity .8s ease, transform .8s ease;
+/* MAIN */
+.screen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  text-align:center;
 }
 
-.hidden {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
+/* CONTAINER */
+.card{
+  width:100%;
+  max-width:420px;
+  border:2px solid rgba(123,97,255,.35);
+  border-radius:28px;
+  padding:34px 26px 40px;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(6px);
 }
 
 /* TEXT */
-h1 {
-  font-size: 2.1rem;
-  font-weight: 600;
-  margin-bottom: 10px;
+h1{
+  font-size:2.3rem;
+  font-weight:800;
+  letter-spacing:.5px;
 }
 
-.subtitle {
-  font-size: .95rem;
-  opacity: .9;
-  margin-bottom: 28px;
+.sub{
+  margin-top:6px;
+  font-size:.95rem;
+  opacity:.9;
 }
 
-.question {
-  font-size: 1.45rem;
-  line-height: 1.4;
-  margin-bottom: 42px;
+.q{
+  margin:36px 0 44px;
+  font-size:1.6rem;
+  font-weight:700;
+  line-height:1.35;
 }
 
 /* BUTTONS */
-.actions {
-  display: flex;
-  gap: 18px;
+.btns{
+  position:relative;
+  height:80px;
 }
 
-button {
-  padding: 14px 26px;
-  border-radius: 999px;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
+button{
+  padding:14px 26px;
+  border-radius:999px;
+  border:none;
+  font-size:1.05rem;
+  font-weight:700;
+  cursor:pointer;
 }
 
-.yes {
-  background: linear-gradient(135deg, #FFE066, #E9D5FF);
-  color: var(--lavender);
+.yes{
+  background:linear-gradient(135deg,#FFF,#E6D9FF);
+  color:var(--lav);
 }
 
-.no {
-  background: transparent;
-  border: 2px solid var(--lavender-soft);
-  color: var(--lavender);
+.no{
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translateX(-50%);
+  background:transparent;
+  border:2px solid var(--lav);
+  color:var(--lav);
+  transition:.3s;
 }
 
 /* PHOTOS */
-.photos {
-  width: 85%;
-  max-width: 320px;
-  position: relative;
-  margin: 26px 0;
+.gallery{
+  display:none;
+  margin-top:26px;
 }
 
-.photos img {
-  width: 100%;
-  border-radius: 22px;
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1s ease;
-  box-shadow: 0 18px 40px rgba(0,0,0,.25);
-}
-
-.photos img.active {
-  opacity: 1;
-  position: relative;
+.gallery img{
+  width:100%;
+  border-radius:22px;
+  margin-bottom:14px;
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
 }
 
 /* LETTER */
-.letter {
-  font-size: 1rem;
-  line-height: 1.7;
-  max-width: 420px;
-  color: var(--lavender);
+.letter{
+  display:none;
+  margin-top:24px;
+  font-size:1.05rem;
+  line-height:1.7;
 }
 
-/* FLOATING */
-.float {
-  position: absolute;
-  bottom: -20px;
-  font-size: 1.4rem;
-  animation: rise 4s linear forwards;
+/* FLOAT */
+.float{
+  position:absolute;
+  bottom:-20px;
+  animation:rise 4s linear forwards;
+  font-size:1.4rem;
 }
-
-@keyframes rise {
-  to { transform: translateY(-120vh); opacity: 0; }
+@keyframes rise{
+  to{transform:translateY(-120vh);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- SECTION 1 -->
-<div class="section" id="s1">
-  <h1>Minnie ✨</h1>
-  <div class="subtitle">Hey Kanda… I’ve been holding this in my heart 💛</div>
+<div class="screen">
+  <div class="card">
 
-  <div class="question">
-    Kya mujhse shadi karogi Minnu?
-  </div>
+    <h1>Minnie ✨</h1>
+    <div class="sub">Hey Kanda… answer honestly 😌</div>
 
-  <div class="actions">
-    <button class="yes" id="yesBtn">Haan 💛</button>
-    <button class="no" id="noBtn">Nahh 🙈</button>
-  </div>
-</div>
+    <div class="q">
+      Kya mujhse shadi karogi Minnu?
+    </div>
 
-<!-- SECTION 2 -->
-<div class="section hidden" id="s2">
-  <h1>Us 💛</h1>
+    <div class="btns">
+      <button class="yes" id="yesBtn">Haan 💛</button>
+      <button class="no" id="noBtn">Nahh 😏</button>
+    </div>
 
-  <div class="photos">
-    <img src="minnie1.jpeg" class="active">
-    <img src="minnie2.jpeg">
-    <img src="minnie3.jpeg">
-  </div>
+    <div class="gallery" id="gallery">
+      <img src="minnie1.jpeg">
+      <img src="minnie2.jpeg">
+      <img src="minnie3.jpeg">
+    </div>
 
-  <div class="subtitle">Every version of us feels like home 💜</div>
+    <div class="letter" id="letter">
+      Minnie,<br><br>
+      This isn’t pressure.<br>
+      This is intention.<br><br>
+      I want fights, laughter, silence, chaos — all with you.<br>
+      I choose you. Again and again 💍
+    </div>
 
-  <button class="yes" onclick="next()">Continue ✨</button>
-</div>
-
-<!-- SECTION 3 -->
-<div class="section hidden" id="s3">
-  <h1>A letter for you 🌿</h1>
-
-  <div class="letter">
-    Minnie,<br><br>
-    I don’t promise perfection.<br>
-    But I promise presence.<br><br>
-
-    To choose you on loud days and quiet ones.<br>
-    To protect your heart like it’s my own.<br>
-    To grow, learn, and love — with you, always.<br><br>
-
-    This isn’t a moment for me.<br>
-    It’s a lifetime I’m asking for 💍
   </div>
 </div>
 
 <script>
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const s1 = document.getElementById("s1");
-const s2 = document.getElementById("s2");
-const s3 = document.getElementById("s3");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const gallery=document.getElementById("gallery");
+const letter=document.getElementById("letter");
 
-/* NO BUTTON PLAYFUL */
-noBtn.onclick = () => {
-  noBtn.style.transform = `translate(${Math.random()*120-60}px, ${Math.random()*120-60}px)`;
+let moves=0;
+
+/* NAUGHTY NO BUTTON */
+noBtn.onclick=()=>{
+  moves++;
+  if(moves<6){
+    noBtn.style.transform=
+      `translate(${Math.random()*180-90}px,${Math.random()*120-60}px)`;
+  }else if(moves<9){
+    noBtn.style.transform="translateX(-50%) scale(.7)";
+  }else{
+    noBtn.textContent="Haan 😳";
+    noBtn.className="yes";
+    noBtn.onclick=accept;
+  }
 };
 
-/* YES FLOW */
-yesBtn.onclick = () => {
-  s1.classList.add("hidden");
-  s2.classList.remove("hidden");
-  float();
-};
+/* YES */
+yesBtn.onclick=accept;
 
-/* NEXT */
-function next() {
-  s2.classList.add("hidden");
-  s3.classList.remove("hidden");
+function accept(){
+  gallery.style.display="block";
+  letter.style.display="block";
   float();
 }
 
-/* PHOTO SLIDES */
-const imgs = document.querySelectorAll(".photos img");
-let i = 0;
-setInterval(() => {
-  imgs[i].classList.remove("active");
-  i = (i + 1) % imgs.length;
-  imgs[i].classList.add("active");
-}, 2500);
-
-/* FLOATING EMOJIS */
-function float() {
-  const e = ["💛","💜","🌿","💍"];
-  for (let i=0;i<20;i++) {
+/* FLOAT */
+function float(){
+  const e=["💛","💜","😏","💍"];
+  for(let i=0;i<18;i++){
     setTimeout(()=>{
       const d=document.createElement("div");
       d.className="float";
@@ -232,7 +210,7 @@ function float() {
       d.style.left=Math.random()*100+"vw";
       document.body.appendChild(d);
       setTimeout(()=>d.remove(),4000);
-    },i*140);
+    },i*150);
   }
 }
 </script>
