@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minnie 💛</title>
+<title>For Minnie 💛</title>
 
 <style>
 :root{
@@ -25,53 +25,48 @@ body{
   color:var(--lav);
 }
 
-/* MAIN */
+/* LAYOUT */
 .screen{
   position:fixed;
   inset:0;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
-  padding:24px;
-  text-align:center;
+  padding:20px;
 }
 
-/* CONTAINER */
 .card{
   width:100%;
   max-width:420px;
-  border:2px solid rgba(123,97,255,.35);
-  border-radius:28px;
   padding:34px 26px 40px;
-  background:rgba(255,255,255,.12);
+  border-radius:30px;
+  border:2px solid rgba(123,97,255,.35);
+  background:rgba(255,255,255,.15);
   backdrop-filter:blur(6px);
+  text-align:center;
 }
 
 /* TEXT */
 h1{
-  font-size:2.3rem;
+  font-size:2.2rem;
   font-weight:800;
-  letter-spacing:.5px;
 }
 
 .sub{
-  margin-top:6px;
   font-size:.95rem;
-  opacity:.9;
+  margin-top:6px;
 }
 
 .q{
-  margin:36px 0 44px;
-  font-size:1.6rem;
+  margin:32px 0 26px;
+  font-size:1.55rem;
   font-weight:700;
-  line-height:1.35;
 }
 
 /* BUTTONS */
 .btns{
   position:relative;
-  height:80px;
+  height:110px;
 }
 
 button{
@@ -85,6 +80,13 @@ button{
 
 .yes{
   background:linear-gradient(135deg,#FFF,#E6D9FF);
+  color:var(--lav);
+}
+
+.tease{
+  margin-top:14px;
+  background:transparent;
+  border:2px dashed var(--lav);
   color:var(--lav);
 }
 
@@ -102,20 +104,45 @@ button{
 /* PHOTOS */
 .gallery{
   display:none;
-  margin-top:26px;
+  margin-top:24px;
 }
 
-.gallery img{
+.main-photo{
   width:100%;
   border-radius:22px;
-  margin-bottom:14px;
   box-shadow:0 18px 40px rgba(0,0,0,.25);
+}
+
+/* POLAROIDS */
+.polaroids{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:18px;
+}
+
+.polaroid{
+  width:120px;
+  background:#fff;
+  padding:8px 8px 18px;
+  border-radius:8px;
+  box-shadow:0 12px 25px rgba(0,0,0,.25);
+  transform:rotate(-6deg);
+}
+
+.polaroid:last-child{
+  transform:rotate(6deg);
+}
+
+.polaroid img{
+  width:100%;
+  border-radius:4px;
 }
 
 /* LETTER */
 .letter{
   display:none;
-  margin-top:24px;
+  margin-top:22px;
   font-size:1.05rem;
   line-height:1.7;
 }
@@ -139,29 +166,41 @@ button{
   <div class="card">
 
     <h1>Minnie ✨</h1>
-    <div class="sub">Hey Kanda… answer honestly 😌</div>
+    <div class="sub">Hey Kanda… ek sawaal hai 😌</div>
 
     <div class="q">
       Kya mujhse shadi karogi Minnu?
     </div>
 
     <div class="btns">
-      <button class="yes" id="yesBtn">Haan 💛</button>
+      <button class="yes" id="yesBtn">Haan 💛</button><br>
+      <button class="tease" id="teaseBtn">Aise kaise 😉💍</button>
       <button class="no" id="noBtn">Nahh 😏</button>
     </div>
 
     <div class="gallery" id="gallery">
-      <img src="minnie1.jpeg">
-      <img src="minnie2.jpeg">
-      <img src="minnie3.jpeg">
+      <img src="minnie1.jpg" class="main-photo">
+
+      <div class="polaroids">
+        <div class="polaroid">
+          <img src="minnie2.jpg">
+        </div>
+        <div class="polaroid">
+          <img src="minnie3.jpg">
+        </div>
+      </div>
     </div>
 
     <div class="letter" id="letter">
       Minnie,<br><br>
-      This isn’t pressure.<br>
-      This is intention.<br><br>
-      I want fights, laughter, silence, chaos — all with you.<br>
-      I choose you. Again and again 💍
+      Thoda bhaav khaana allowed hai,<br>
+      par zindagi saath jeeni hai 💛<br><br>
+
+      I don’t want perfect days.<br>
+      I want *you* on all days.<br><br>
+
+      Hamesha tumhara,<br>
+      ❤️
     </div>
 
   </div>
@@ -170,24 +209,33 @@ button{
 <script>
 const noBtn=document.getElementById("noBtn");
 const yesBtn=document.getElementById("yesBtn");
+const teaseBtn=document.getElementById("teaseBtn");
 const gallery=document.getElementById("gallery");
 const letter=document.getElementById("letter");
 
 let moves=0;
 
-/* NAUGHTY NO BUTTON */
+/* NAHH BEHAVIOR */
 noBtn.onclick=()=>{
   moves++;
   if(moves<6){
     noBtn.style.transform=
       `translate(${Math.random()*180-90}px,${Math.random()*120-60}px)`;
   }else if(moves<9){
-    noBtn.style.transform="translateX(-50%) scale(.7)";
+    noBtn.style.transform="translateX(-50%) scale(.6)";
   }else{
     noBtn.textContent="Haan 😳";
     noBtn.className="yes";
     noBtn.onclick=accept;
   }
+};
+
+/* AISE KAISE */
+teaseBtn.onclick=()=>{
+  teaseBtn.textContent="Thoda bhaav toh khaana padega 😌";
+  setTimeout(()=>{
+    teaseBtn.textContent="Aise kaise 😉💍";
+  },2000);
 };
 
 /* YES */
@@ -199,10 +247,10 @@ function accept(){
   float();
 }
 
-/* FLOAT */
+/* FLOATING */
 function float(){
   const e=["💛","💜","😏","💍"];
-  for(let i=0;i<18;i++){
+  for(let i=0;i<16;i++){
     setTimeout(()=>{
       const d=document.createElement("div");
       d.className="float";
@@ -217,3 +265,4 @@ function float(){
 
 </body>
 </html>
+
