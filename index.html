@@ -7,36 +7,37 @@
 
 <style>
 :root {
-  --yellow: #FFD84D;
+  --yellow: #FFF3B0;
   --lavender: #7C6AF2;
+  --lavender-soft: #9F91FF;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--yellow);
   color: var(--lavender);
   height: 100vh;
   overflow: hidden;
 }
 
-/* FULL SCREEN SECTIONS */
+/* SECTIONS */
 .section {
   position: absolute;
   inset: 0;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 24px;
-  transition: opacity .7s ease, transform .7s ease;
+  transition: opacity .8s ease, transform .8s ease;
 }
 
 .hidden {
@@ -47,66 +48,81 @@ body {
 
 /* TEXT */
 h1 {
-  font-size: 2rem;
-  margin-bottom: 12px;
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-p {
-  font-size: 1rem;
-  margin-bottom: 20px;
+.subtitle {
+  font-size: .95rem;
+  opacity: .9;
+  margin-bottom: 28px;
 }
 
 .question {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 36px;
+  font-size: 1.45rem;
+  line-height: 1.4;
+  margin-bottom: 42px;
 }
 
 /* BUTTONS */
-.buttons {
+.actions {
   display: flex;
   gap: 18px;
 }
 
 button {
-  min-width: 140px;
-  height: 52px;
-  border-radius: 18px;
+  padding: 14px 26px;
+  border-radius: 999px;
   border: none;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
 }
 
-#yesBtn {
-  background: linear-gradient(135deg, #fff3b0, #e9d5ff);
+.yes {
+  background: linear-gradient(135deg, #FFE066, #E9D5FF);
   color: var(--lavender);
 }
 
-#noBtn {
+.no {
   background: transparent;
-  border: 2px dashed var(--lavender);
+  border: 2px solid var(--lavender-soft);
   color: var(--lavender);
-  position: fixed; /* IMPORTANT: prevents overlap */
-  bottom: 22%;
 }
 
-/* PHOTO */
-.photo {
-  width: 80%;
+/* PHOTOS */
+.photos {
+  width: 85%;
   max-width: 320px;
-  border-radius: 24px;
-  margin: 24px 0;
-  box-shadow: 0 20px 40px rgba(0,0,0,.25);
-  animation: fadeUp 1s ease forwards;
+  position: relative;
+  margin: 26px 0;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.photos img {
+  width: 100%;
+  border-radius: 22px;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  box-shadow: 0 18px 40px rgba(0,0,0,.25);
 }
 
-/* FLOATING EMOJIS */
+.photos img.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* LETTER */
+.letter {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 420px;
+  color: var(--lavender);
+}
+
+/* FLOATING */
 .float {
   position: absolute;
   bottom: -20px;
@@ -115,10 +131,7 @@ button {
 }
 
 @keyframes rise {
-  to {
-    transform: translateY(-120vh);
-    opacity: 0;
-  }
+  to { transform: translateY(-120vh); opacity: 0; }
 }
 </style>
 </head>
@@ -127,49 +140,50 @@ button {
 
 <!-- SECTION 1 -->
 <div class="section" id="s1">
-  <h1>💛 Minnie ✨</h1>
-  <p>Hey Kanda… I need to ask you something important 💭</p>
+  <h1>Minnie ✨</h1>
+  <div class="subtitle">Hey Kanda… I’ve been holding this in my heart 💛</div>
 
   <div class="question">
-    Kya mujhse shadi karogi Minnu ?? 💍
+    Kya mujhse shadi karogi Minnu?
   </div>
 
-  <div class="buttons">
-    <button id="yesBtn">Haan 💛</button>
+  <div class="actions">
+    <button class="yes" id="yesBtn">Haan 💛</button>
+    <button class="no" id="noBtn">Nahh 🙈</button>
   </div>
-
-  <button id="noBtn">Aise kaise 😉</button>
 </div>
 
 <!-- SECTION 2 -->
 <div class="section hidden" id="s2">
-  <h1>You chose us 💛</h1>
+  <h1>Us 💛</h1>
 
-  <img src="minnie.jpeg" alt="Minnie" class="photo">
+  <div class="photos">
+    <img src="minnie1.jpeg" class="active">
+    <img src="minnie2.jpeg">
+    <img src="minnie3.jpeg">
+  </div>
 
-  <p>
-    Minnie, tum meri har khushi ki wajah ho 💜<br>
-    Meri aadat, meri zarurat, mera ghar 🌿
-  </p>
+  <div class="subtitle">Every version of us feels like home 💜</div>
 
-  <button onclick="next()">Continue ✨</button>
+  <button class="yes" onclick="next()">Continue ✨</button>
 </div>
 
 <!-- SECTION 3 -->
 <div class="section hidden" id="s3">
-  <h1>Forever, Minnu 💍</h1>
+  <h1>A letter for you 🌿</h1>
 
-  <p>
-    Main wada karta hoon —<br><br>
-    Tumhara haath kabhi nahi chhodunga 💛<br>
-    Har muskaan ka khayal rakhunga 💜<br>
-    Aur har janam sirf tumse hi pyaar karunga 🌿
-  </p>
+  <div class="letter">
+    Minnie,<br><br>
+    I don’t promise perfection.<br>
+    But I promise presence.<br><br>
 
-  <p style="margin-top:20px;">
-    This isn’t a question anymore.<br>
-    This is my promise ✨
-  </p>
+    To choose you on loud days and quiet ones.<br>
+    To protect your heart like it’s my own.<br>
+    To grow, learn, and love — with you, always.<br><br>
+
+    This isn’t a moment for me.<br>
+    It’s a lifetime I’m asking for 💍
+  </div>
 </div>
 
 <script>
@@ -179,31 +193,38 @@ const s1 = document.getElementById("s1");
 const s2 = document.getElementById("s2");
 const s3 = document.getElementById("s3");
 
-const noTexts = ["Minnu 🥺","Soch lo 😌","Aise kaise 😏","Kanda pls 💛"];
-let n = 0;
-
+/* NO BUTTON PLAYFUL */
 noBtn.onclick = () => {
-  noBtn.textContent = noTexts[n % noTexts.length];
-  noBtn.style.left = Math.random()*70 + 10 + "vw";
-  noBtn.style.bottom = Math.random()*40 + 10 + "vh";
-  n++;
+  noBtn.style.transform = `translate(${Math.random()*120-60}px, ${Math.random()*120-60}px)`;
 };
 
+/* YES FLOW */
 yesBtn.onclick = () => {
   s1.classList.add("hidden");
   s2.classList.remove("hidden");
   float();
 };
 
+/* NEXT */
 function next() {
   s2.classList.add("hidden");
   s3.classList.remove("hidden");
   float();
 }
 
+/* PHOTO SLIDES */
+const imgs = document.querySelectorAll(".photos img");
+let i = 0;
+setInterval(() => {
+  imgs[i].classList.remove("active");
+  i = (i + 1) % imgs.length;
+  imgs[i].classList.add("active");
+}, 2500);
+
+/* FLOATING EMOJIS */
 function float() {
   const e = ["💛","💜","🌿","💍"];
-  for (let i=0;i<22;i++) {
+  for (let i=0;i<20;i++) {
     setTimeout(()=>{
       const d=document.createElement("div");
       d.className="float";
@@ -211,11 +232,10 @@ function float() {
       d.style.left=Math.random()*100+"vw";
       document.body.appendChild(d);
       setTimeout(()=>d.remove(),4000);
-    },i*120);
+    },i*140);
   }
 }
 </script>
 
 </body>
 </html>
-
